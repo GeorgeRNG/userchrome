@@ -10,6 +10,7 @@
                 width: 100%;
                 min-height: 100%;
                 margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
             @media (prefers-color-scheme: dark) {
@@ -21,6 +22,30 @@
             main {
                 max-width: 100ch;
                 margin: auto;
+                margin-block: 5em;
+                display: flex;
+                flex-direction: column;
+            }
+
+            button {
+                margin-top: 2ch;
+                margin-right: auto;
+            }
+
+            code, kbd {
+                font-family: 'Courier New', Courier, monospace;
+            }
+
+            code {
+                background-color: black;
+                padding: 2px;
+                border-radius: 4px;
+            }
+
+            kbd {
+                font-size: 110%;
+                outline: 1px solid #0005;
+                border-radius: 2px;
             }
         </style>
     </head>
@@ -28,6 +53,81 @@
     <body>
         <main>
             <h1>Firefox userChrome.css generator</h1>
+            <p>
+                Firefox userChrome customizations to remove things I don't like.
+                <br>
+                Most things here can be done with <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly">shortcuts</a> or in the toolbar.
+                <br>
+                Go through the settings to select that you like, click Generate and follow the install instructions.
+                <br>
+                Firefox updates <em>might</em> break this but if it does break something I'll fix it.
+                <br>
+                This is on github, so if you want to contribute you can. Go <a href="https://github.com/GeorgeRNG/userchrome">here</a>.
+                <br>
+                <small>I don't use everything here.</small>
+            </p>
+            <div>
+                <h2>Options</h2>
+                <h3>Tabs</h3>
+                <label>Remove gaps <input type="checkbox" name="Tab Gaps" id="tab-gaps"></label>
+                <br>
+                <label>Remove X button <input type="checkbox" name="Tab Close Button" id="tab-close"> <small>Close by middle click on tab, <kbd>Ctrl</kbd> + <kbd>W</kbd>, or in the context menu.</small></label>
+                <br>
+                <label>Remove list all tabs <input type="checkbox" name="List All Tabs" id="all-tabs"></label>
+                <br>
+                <label>Make tabs square <input type="checkbox" name="Square Tabs" id="square-tabs"></label>
+                <br>
+                <label>Bar around selected tabs <input type="checkbox" name="Tab Seperator" id="tab-bar"> <small>Without the close button and with no background the end can be hard to see</small></label>
+
+                <h3>Menu Bar</h3>
+                <p>File ect, and close button ect</p>
+                <label>Fix toolbar gap 
+                    <select id="fix-toolbar-gap">
+                        <option value="none">Unselected</option>
+                        <option value="shrink-buttons">Shrink close ect</option>
+                        <option value="expand-buttons">Expand toolbar buttons</option>
+                    </select>
+                    <small>Whilst the toolbar is open, a gap can appear underneath it.</small>
+                </label>
+
+                <h3>Navigation bar</h3>
+                <label>Remove back button <input type="checkbox" name="Remove Back Button" id="back"> <small>Use history or <kbd>Alt</kbd> + <kbd>&leftarrow;</kbd></small></label>
+                <br>
+                <label>Remove forward button <input type="checkbox" name="Remove Forward Button" id="forward"> <small>Use histroy or <kbd>Alt</kbd> + <kbd>&rightarrow;</kbd></small></label>
+                <br>
+                <label>Remove application menu <input type="checkbox" name="Remove Application Menu" id="app-menu"> <small>It has lots of options in it which which will be hidden, see <a href="https://support.mozilla.org/en-US/kb/keyboard-shortcuts-perform-firefox-tasks-quickly">firefox shortcuts</a></small></label>
+
+                <h4>URL Bar</h4>
+                <label>Remove reader view <input type="checkbox" name="Remove Reader" id="reader"> <small>Use <kbd>F9</kbd></small></label>
+                <br>
+                <label>Remove bookmark page button <input type="checkbox" name="Remove Bookmark Button" id="bookmark"> <small>Use <kbd>Ctrl</kbd> + <kbd>D</kbd></small></label>
+
+                <h3>Context Menus</h3>
+                <label>Remove side gap <input type="checkbox" name="Context Gap" id="ctx-gap"></label>
+                <br>
+                <label>Make buttons smaller <input type="checkbox" name="Small Context" id="ctx-small"></label>
+                <br>
+                <label>Remove seperator gap <input type="checkbox" name="Ruler Gap" id="ctx-ruler"></label>
+            </div>
+            <button type="submit" id="gen">Generate</button>
+            <p>
+                <h2>How to install</h2>
+                <p>
+                    Click generate to download the file
+                    <br>
+                    Go to <code>about:config</code> and search for <code>toolkit.legacyUserProfileCustomizations.stylesheets</code>
+                    <br>
+                    If it's false, set it to true. This allows userChrome.css to work.
+                    <br>
+                    Click <a href="#gen">generate</a> to download userChrome.css
+                    <br>
+                    Go to <code>about:support</code>, find <code>Profile Folder</code> and click <code>Open Folder</code>
+                    <br>
+                    If there isn't, create a folder called <code>chrome</code>, and go into it.
+                    <br>
+                    Put <code>userChrome.css</code> into it and restart firefox.
+                </p>
+            </p>
         </main>
     </body>
 </html>
