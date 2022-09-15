@@ -29,6 +29,16 @@ const css = {
     appmenu: `#PanelUI-menu-button {
         display: none;
     }`,
+    menustart: `#nav-bar {
+        display: flex;
+        flex-flow: row-reverse;
+    }
+    #nav-bar-customization-target {
+        width: 100%;
+    }
+    #PanelUI-menu-button {
+        padding-inline-end: 0 !important;
+    }`,
     reader: `#reader-mode-button {
         display: none;
     }`,
