@@ -4,6 +4,9 @@ const css = {
     tabgaps: `tab.tabbrowser-tab {
     padding: 0 !important;
     }`,
+    borderradius: `* {
+        border-radius: 0 !important;
+    }`,
     tabclose: `tab.tabbrowser-tab > stack:nth-child(1) > hbox:nth-child(2) > image:nth-child(3) {
         display: none;
     }`,
