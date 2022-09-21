@@ -20,6 +20,15 @@ const css = {
     tabbar: `.tabbrowser-tab:not([visuallyselected="true"], [multiselected]) {
         outline: 1px solid #fff6 !important;
     }`,
+    fixtoolbargap: {
+        none: ``,
+        shrinkbuttons: `hbox.titlebar-buttonbox-container:nth-child(3) > hbox:nth-child(1) * {
+            margin-block: 0 !important;
+        }`,
+        expandbuttons: `#menubar-items {
+            display: flex;
+        }`
+    },
     back: `#back-button {
         display: none;
     }`,
@@ -62,7 +71,10 @@ if(gen != null && download != null) gen.onclick = () => {
     let output = '';
     document.querySelectorAll('input').forEach(value => {
         if(!value.checked) return;
-        output += css[value.id.replace('-','')] + '\n';
+        output += css[value.id.replaceAll('-','')] + '\n';
+    });
+    document.querySelectorAll('select').forEach(value => {
+        output += css[value.id.replaceAll('-','')][value.value.replaceAll('-','')]
     })
     download('userChrome.css',output);
 }
